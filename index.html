@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matiyas Mitiku | Professional Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind Colors for Gold Accent -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-black': '#0A0A0A',
+                        'classic-gold': '#D4AF37', // A rich, classic gold
+                        'light-gold': '#FFD700',   // A brighter gold for hover/accents
+                        'off-white': '#F3F4F6',
+                        'dark-bg': '#151515',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling for navigation links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+        /* General styling for the dark theme - PURE FLAT BLACK */
+        body {
+            background: #0A0A0A; 
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Adjusted section title for left-aligned design - Light effects removed */
+        .section-title {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding-bottom: 2.5rem;
+            position: relative;
+        }
+        /* Align the title line to the left for desktop, center for mobile */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%; /* Center on mobile */
+            @media (min-width: 1024px) {
+                left: 0; /* Align left on desktop */
+                transform: translateX(0); /* No translation on desktop */
+            }
+            bottom: 1rem;
+            transform: translateX(-50%); /* Center on mobile */
+            width: 150px;
+            height: 4px;
+            background-color: #D4AF37;
+            border-radius: 9999px;
+            /* Completely removed shadow */
+            box-shadow: none;
+        }
+        /* Gold Border for Cards and key containers - Completely flat and sharp */
+        .gold-glow-border {
+            border: 1px solid #D4AF37; /* Solid border for structure */
+            box-shadow: none; /* Removed all shadow */
+            transition: all 0.3s ease-in-out;
+        }
+        .gold-glow-border:hover {
+            border-color: #FFD700;
+            box-shadow: none; /* Removed hover shadow */
+            transform: none; /* Removed lift/transform */
+        }
+    </style>
+</head>
+<body class="bg-deep-black text-off-white">
+
+    <!-- Navbar (Fixed/Sticky) - Removed all shadows -->
+    <nav id="navbar" class="sticky top-0 z-50 bg-deep-black/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Name -->
+                <a href="#home" class="text-2xl font-bold tracking-wider text-classic-gold hover:text-light-gold transition duration-300">
+                    Matiyas 
+                </a>
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-off-white hover:text-light-gold transition duration-300 font-medium p-2 rounded-lg">Home</a>
+                    <a href="#about" class="text-off-white hover:text-light-gold transition duration-300 font-medium p-2 rounded-lg">About</a>
+                    <a href="#portfolio" class="text-off-white hover:text-light-gold transition duration-300 font-medium p-2 rounded-lg">Portfolio</a>
+                    <a href="#contact" class="text-off-white hover:text-light-gold transition duration-300 font-medium p-2 rounded-lg">Contact</a>
+                </div>
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden text-classic-gold p-2 rounded-md hover:bg-dark-bg focus:outline-none focus:ring-2 focus:ring-light-gold" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-off-white hover:bg-black/50 hover:text-light-gold transition duration-300">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-off-white hover:bg-black/50 hover:text-light-gold transition duration-300">About</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-off-white hover:bg-black/50 hover:text-light-gold transition duration-300">Portfolio</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-off-white hover:bg-black/50 hover:text-light-gold transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. Home Section (Hero) - FLAT, STRUCTURED, HIGH-CONTRAST -->
+        <section id="home" class="min-h-screen flex items-center p-8 relative overflow-hidden">
+            <!-- Subtle Grid Background Effect for structure -->
+            <div class="absolute inset-0 z-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #1A1A1A 0, #1A1A1A 1px, transparent 1px, transparent 20px);"></div>
+            <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Column: Text Content Container (7/12 columns) - Removed shadow -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-4 p-6 sm:p-10 lg:p-12 rounded-xl bg-deep-black/70 backdrop-blur-sm gold-glow-border">
+                    
+                    <!-- "I'm Matiyas" -->
+                    <p class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-700 tracking-wider uppercase mb-6">
+                        I'm Matiyas Mitiku
+                    </p>
+                    <p class="text-xl text-off-white uppercase tracking-widest font-semibold pt-4">
+                        Frontend Developer
+                    </p>
+                    <p class="text-2xl font-light text-gray-400 max-w-lg lg:max-w-none mx-auto lg:mx-0 pt-4">
+                       Frontend Developer | React & JavaScript | Building Interactive Websites.
+                    </p>
+                    
+                    <div class="pt-6">
+                        <!-- Removed button shadow -->
+                        <a href="#portfolio" class="inline-block px-10 py-4 text-xl font-bold bg-classic-gold text-deep-black rounded-lg hover:bg-light-gold transition duration-300 transform border-b-4 border-r-4 border-dark-bg">
+                            Explore Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Profile Image (5/12 columns) - Added uploaded image -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end pt-10 lg:pt-0 order-first lg:order-last relative">
+                    <!-- Accent Box (Background Layer) -->
+                    <div class="absolute w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 top-4 left-4 lg:top-8 lg:left-8 -z-10 bg-classic-gold/10 border-2 border-classic-gold/30 rounded-xl hidden sm:block"></div>
+
+                    <!-- Main Image Container (Foreground Layer) - Flat appearance, no shadow -->
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 border-4 border-classic-gold overflow-hidden rounded-xl relative">
+                        <!-- The uploaded image is used here -->
+                        <img src="ChatGPT Image Nov 15, 2025, 01_37_31 AM.png" 
+                             alt="Matiyas Mitiku Profile Image" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Section (Skills) -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-black/50">
+            <div class="max-w-7xl mx-auto text-center lg:text-left">
+                <h2 class="section-title text-center lg:text-left">About Me</h2>
+                <div class="max-w-3xl mx-auto lg:mx-0 space-y-6 text-lg text-gray-300 pt-10">
+                    <p>
+                        With a strong foundation in modern technology and a keen eye for design, I specialize in building robust and user-friendly applications. My approach combines technical excellence with creative problem-solving to deliver projects that are both efficient and aesthetically pleasing.
+                    </p>
+                    <p>
+                        I am passionate about continuous learning and thrive in dynamic environments. Below are some of the key technical areas and skills I focus on.
+                    </p>
+                </div>
+
+                <!-- Skills Grid with Flat Gold Border Cards -->
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- Skill Card 1 -->
+                    <div class="p-6 bg-deep-black rounded-xl gold-glow-border">
+                        <svg class="w-10 h-10 mx-auto text-classic-gold mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="text-xl font-semibold text-off-white">Frontend Dev</h3>
+                        <p class="text-sm text-gray-500">HTML, CSS, React, Vue</p>
+                    </div>
+                    <!-- Skill Card 2 -->
+                    <div class="p-6 bg-deep-black rounded-xl gold-glow-border">
+                        <svg class="w-10 h-10 mx-auto text-classic-gold mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 012-2h10a2 2 0 012 2M5 12a2 2 0 002 2h10a2 2 0 002-2m-4 6h-4m-4-6h.01"></path></svg>
+                        <h3 class="text-xl font-semibold text-off-white">Backend Systems</h3>
+                        <p class="text-sm text-gray-500">Node.js, Python, Databases</p>
+                    </div>
+                    <!-- Skill Card 3 -->
+                    <div class="p-6 bg-deep-black rounded-xl gold-glow-border">
+                        <svg class="w-10 h-10 mx-auto text-classic-gold mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.276a2.25 2.25 0 01.076 2.22l-1.5 1.5M10.707 5.293A1 1 0 0010 6v6a1 1 0 00.293.707l5.414 5.414a2 2 0 002.828 0l3.75-3.75a2 2 0 000-2.828L13.707 5.293z"></path></svg>
+                        <h3 class="text-xl font-semibold text-off-white">UI/UX Design</h3>
+                        <p class="text-sm text-gray-500">Figma, Wireframing, Prototyping</p>
+                    </div>
+                    <!-- Skill Card 4 -->
+                    <div class="p-6 bg-deep-black rounded-xl gold-glow-border">
+                        <svg class="w-10 h-10 mx-auto text-classic-gold mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h.01M17 4H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2z"></path></svg>
+                        <h3 class="text-xl font-semibold text-off-white">DevOps/Cloud</h3>
+                        <p class="text-sm text-gray-500">AWS, Docker, CI/CD</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Portfolio Section (Projects) -->
+        <section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto text-center lg:text-left">
+                <h2 class="section-title text-center lg:text-left">Latest Projects</h2>
+
+                <!-- Projects Grid with Flat Gold Border Cards -->
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                    <!-- Project Card 1 - Removed shadow -->
+                    <div class="bg-black rounded-xl overflow-hidden gold-glow-border">
+                        <img src="https://placehold.co/600x400/1C1C1C/D4AF37?text=Web+App+Design" alt="Project 1 Placeholder" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-bold text-classic-gold mb-2">Crafting Interactive & Responsive Web Experiences</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A full-stack application built for scalability and performance. Features include secure payment processing and inventory management.</p>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full">React</span>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full ml-2">Node.js</span>
+                            <a href="#" class="block mt-4 text-classic-gold hover:text-light-gold font-medium">View Case Study &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 - Removed shadow -->
+                    <div class="bg-black rounded-xl overflow-hidden gold-glow-border">
+                        <img src="https://placehold.co/600x400/1C1C1C/D4AF37?text=Mobile+App+Concept" alt="Project 2 Placeholder" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-bold text-classic-gold mb-2">Building Modern Websites with React & JavaScript</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A cross-platform mobile app focused on intuitive task organization and collaboration tools for small teams.</p>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full">Flutter</span>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full ml-2">Firebase</span>
+                            <a href="#" class="block mt-4 text-classic-gold hover:text-light-gold font-medium">View Case Study &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 - Removed shadow -->
+                    <div class="bg-black rounded-xl overflow-hidden gold-glow-border">
+                        <img src="https://placehold.co/600x400/1C1C1C/D4AF37?text=Data+Visualization" alt="Project 3 Placeholder" class="w-full h-48 object-cover">
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-bold text-classic-gold mb-2">Real-Time Data Dashboard</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Developed a sophisticated dashboard for visualizing streaming data with custom charts and responsive controls.</p>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full">Python</span>
+                            <span class="inline-block text-xs font-semibold py-1 px-3 bg-gray-800 text-off-white rounded-full ml-2">D3.js</span>
+                            <a href="#" class="block mt-4 text-classic-gold hover:text-light-gold font-medium">View Case Study &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Contact Section (Map Included) -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-black/50">
+            <div class="max-w-7xl mx-auto text-center lg:text-left">
+                <h2 class="section-title text-center lg:text-left">Get In Touch</h2>
+                <p class="mt-4 mb-12 text-lg text-gray-300">
+                    I'm always open to discussing new projects, creative ideas, or opportunities.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
+                    <!-- Contact Form with Flat Gold Border - Removed shadow -->
+                    <div class="bg-deep-black p-8 rounded-xl gold-glow-border">
+                        <h3 class="text-2xl font-bold text-classic-gold mb-6">Send Me a Message</h3>
+                        <form onsubmit="event.preventDefault(); showMessage();" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full p-3 bg-gray-900 border border-gray-700 text-off-white rounded-lg focus:ring-classic-gold focus:border-classic-gold">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full p-3 bg-gray-900 border border-gray-700 text-off-white rounded-lg focus:ring-classic-gold focus:border-classic-gold">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full p-3 bg-gray-900 border border-gray-700 text-off-white rounded-lg focus:ring-classic-gold focus:border-classic-gold"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 mt-4 text-lg font-semibold bg-classic-gold text-deep-black rounded-lg hover:bg-light-gold transition duration-300 transform">
+                                Send Message
+                            </button>
+                            <div id="status-message" class="mt-4 text-center text-classic-gold font-semibold transition duration-500" style="opacity: 0;"></div>
+                        </form>
+                    </div>
+
+                    <!-- Map & Address Info -->
+                    <div class="space-y-6">
+                        <!-- Location Card - Removed shadow -->
+                        <div class="p-6 bg-deep-black rounded-xl gold-glow-border">
+                            <h3 class="text-2xl font-bold text-classic-gold mb-4">My Location</h3>
+                            <p class="text-gray-400">Based in the heart of East Africa.</p>
+                        </div>
+                        <!-- Embedded Map for Addis Ababa with Flat Gold Border -->
+                        <div class="aspect-video w-full rounded-xl overflow-hidden border-2 border-classic-gold gold-glow-border">
+                            <iframe
+                                title="Map of Addis Ababa, Ethiopia"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d157648.16912384666!2d38.68305047466519!3d9.006935100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cedab2da7d%3A0xd6461a1548231338!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1700411831778!5m2!1sen!2sus"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            &copy; 2024 Matiyas Mitiku. All Rights Reserved. | Designed with <span class="text-classic-gold">&hearts;</span> and Code.
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Custom alert/message box for form submission
+        function showMessage() {
+            const statusDiv = document.getElementById('status-message');
+            // Clear inputs (simulate successful send)
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+
+            statusDiv.textContent = 'Thank you for your message, Matiyas! I will respond soon.';
+            statusDiv.style.opacity = 1;
+
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.opacity = 0;
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
